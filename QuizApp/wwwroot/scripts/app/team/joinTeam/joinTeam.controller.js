@@ -7,8 +7,6 @@ JoinTeamController.$inject = ['$state','teamService', 'loginService','$statePara
 function JoinTeamController($state, teamService, loginService, $stateParams) {
     var vm = this;
 
-    vm.a = "angularCheck";
-
     vm.user = loginService.getCurrentUser();
 
     if(vm.user)

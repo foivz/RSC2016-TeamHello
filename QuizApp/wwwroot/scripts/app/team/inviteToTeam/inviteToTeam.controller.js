@@ -7,8 +7,6 @@ InviteToTeamController.$inject = ['$state','teamService','$stateParams'];
 function InviteToTeamController($state, teamService, $stateParams) {
     var vm = this;
 
-    vm.a = "angularCheck";
-
     teamService.getTeam($stateParams.id)
     .then(function (result) {
         vm.team = result.data;
