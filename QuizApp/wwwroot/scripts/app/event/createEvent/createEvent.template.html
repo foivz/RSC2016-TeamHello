@@ -1,0 +1,10 @@
+﻿<form role="form" name="createEventForm" ng-submit="vm.createEvent()" novalidate>
+    <fieldset>
+        <label>Ime</label>
+        <div class="form-group">
+            <input ng-model="vm.event.Name" required placeholder="Ime" type="text">
+        </div>
+
+        <button type="submit" ng-disabled="createEventForm.$invalid">Spremi</button>
+    </fieldset>
+</form>
