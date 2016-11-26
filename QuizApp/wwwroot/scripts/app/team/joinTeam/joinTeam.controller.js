@@ -9,11 +9,11 @@ function JoinTeamController($state, teamService, loginService, $stateParams) {
 
     vm.a = "angularCheck";
 
-    vm.userID = loginService.isLoggedIn();
+    vm.user = loginService.getCurrentUser();
 
-    if(vm.userID)
+    if(vm.user)
     {
-        teamService.joinTeam({id: vm.userID,token: $stateParams.token})
+        teamService.joinTeam({id: vm.user.ID,token: $stateParams.token})
         .then(function (result) {
         $state.go("home");
         });

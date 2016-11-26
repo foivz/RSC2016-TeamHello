@@ -1,8 +1,11 @@
-﻿lalala
-
-{{vm.number}}
-
-{{vm.lastName}}
+﻿<div ng-repeat="event in vm.events">
+    {{vm.event.Name}}
+    {{vm.event.Location}}
+    {{vm.event.Date}}
+    {{vm.event.Description}}
+    {{vm.event.Prizes}}
+    {{vm.event.Rules}}
+</div>
 
 <button g-login type="button">Google Login</button>
 <button fb-login type="button">facebook Login</button>
