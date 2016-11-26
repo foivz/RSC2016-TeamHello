@@ -1,1 +1,14 @@
-﻿{{vm.a}}
+﻿<div ng-repeat="event in vm.futureEvents">
+    <p>
+        {{event.name}}
+    </p>
+    <p>
+        {{event.time}}
+    </p>
+    <div ng-show="vm.isModerator(event.moderatorID)">
+        <button ng-click="vm.activateEvent(event.ID)">Activate</button>
+    </div>
+    <div ng-hide="vm.isModerator(event.moderatorID) && event.IsActive">
+        <button ng-click="vm.joinEvent(event.ID)">Join</button>
+    </div>
+</div>

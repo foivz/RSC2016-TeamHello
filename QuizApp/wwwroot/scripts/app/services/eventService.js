@@ -39,12 +39,12 @@ function EventService($http) {
     };
 
     function activateEvent(event) {
-        event.Active = true;
+        event.IsActive = true;
         editEvent(event);
     };
 
     function deactivateEvent(event) {
-        event.Active = false;
+        event.IsActive = false;
         editEvent(event);
     };
 
