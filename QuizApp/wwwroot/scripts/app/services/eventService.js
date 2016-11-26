@@ -6,9 +6,8 @@ EventService.$inject = ['$http', 'loginService'];
 
 function EventService($http, loginService) {
 
-    $http.defaults.headers.common['Authorization'] = loginService.getCurrentToken();
-
     function createEvent(event) {
+        $http.defaults.headers.common['Authorization'] = loginService.getCurrentToken();
         return $http.post('/api/events/create', event);
     };
 
