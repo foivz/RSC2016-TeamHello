@@ -2,11 +2,10 @@
 
 angular.module('app').controller('homeController', HomeController);
 
-HomeController.$inject = [];
+HomeController.$inject = ['loginService'];
 
-function HomeController() {
+function HomeController(loginService) {
     var vm = this;
 
     vm.number = 3;
-    
 };
