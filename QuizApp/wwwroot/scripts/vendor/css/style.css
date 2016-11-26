@@ -20,7 +20,7 @@ body {
     top: 0px;
     right: 0px;
     left: 0px;
-    overflow:scroll;
+    overflow:auto;
 }
 
 .login-main {
