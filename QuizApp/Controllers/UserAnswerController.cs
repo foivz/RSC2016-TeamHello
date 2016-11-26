@@ -10,33 +10,33 @@ using System.Collections.Generic;
 namespace QuizApp.Controllers.Requests
 {
     [Authorize]
-    [Route("api/answer")]
-    public class AnswerController : Controller
+    [Route("api/userAnswer")]
+    public class UserAnswerController : Controller
     {
-        AnswerRepository _repo;
+        UserAnswerRepository _repo;
         private int _userid;
-        public AnswerController(AnswerRepository repo)
+        public UserAnswerController(UserAnswerRepository repo)
         {
             _repo = repo;
             _userid = Convert.ToInt32(User.Claims.Where(x => x.Type == "UserID").SingleOrDefault().Value);
         }
 
         [HttpPost("create")]
-        public int Create([FromBody]Answer Answer)
+        public int Create([FromBody]UserAnswer UserAnswer)
         {
-            return _repo.CreateAnswer(Answer);
+            return _repo.CreateUserAnswer(UserAnswer);
         }
 
         [HttpGet("{id}")]
-        public Answer Get(int id)
+        public UserAnswer Get(int id)
         {
-            return _repo.GetAnswer(id);
+            return _repo.GetUserAnswer(id);
         }
 
-        public JsonResult GetAllByQuestion(int questionID)
+        public JsonResult GetAllByUser(int userID)
         {
-            ICollection<Answer> answers = _repo.GetAllAnswers().Where(x => x.QuestionId == questionID).ToList();
-            return new JsonResult(answers);
+            ICollection<UserAnswer> userAnswers = _repo.GetAllUserAnswers().Where(x => x.UserId == userID).ToList();
+            return new JsonResult(userAnswers);
         }
     }
 }
