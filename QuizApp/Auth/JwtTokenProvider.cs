@@ -37,7 +37,7 @@ namespace Evidencija.Auth
                     issuer: _tokenOptions.Issuer,
                     audience: _tokenOptions.Audience,
                     signingCredentials: _tokenOptions.SigningCredentials,
-                    subject: new ClaimsIdentity(new GenericIdentity(User.Nick, "TokenAuth"), Claims),
+                    subject: new ClaimsIdentity(new GenericIdentity(User.Name, "TokenAuth"), Claims),
                     expires: Expires
                     );
 
