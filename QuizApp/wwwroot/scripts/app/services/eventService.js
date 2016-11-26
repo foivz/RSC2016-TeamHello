@@ -28,20 +28,20 @@ function EventService($http, loginService) {
         return $http.get('api/events/getActive');
     };
 
-    function getEventsByMod(id) {
-        return $http.get('api/events/getByMod/' + id);
+    function getEventsByMod() {
+        return $http.get('api/events/getByMod');
     };
 
-    function getPastEventsByMod(id) {
-        return $http.get('api/events/getPastByMod/' + id);
+    function getPastEventsByMod() {
+        return $http.get('api/events/getPastByMod');
     };
 
-    function getFutureEventsByMod(id) {
-        return $http.get('api/events/getFutureByMod/' + id);
+    function getFutureEventsByMod() {
+        return $http.get('api/events/getFutureByMod');
     };
 
-    function getFutureEventsByUser(id) {
-        return $http.get('api/events/getFutureByUser/' + id);
+    function getFutureEventsByUser() {
+        return $http.get('api/events/getFutureByUser');
     };
 
     function activateEvent(event) {

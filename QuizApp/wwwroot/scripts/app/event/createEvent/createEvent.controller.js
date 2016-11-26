@@ -17,7 +17,10 @@ function CreateEventController($state, eventService, loginService) {
             if (question.Type == 2 || question.Type == 3) {
                 question.Answers.forEach(answer => answer.IsCorrect = true)
             }
+            question.EventId = vm.event.ID;
         });
+
+        questionService.createQuestionsWithAnswers(vm.questions);
 
         eventService.createEvent(vm.event)
         .then(function (result) {
