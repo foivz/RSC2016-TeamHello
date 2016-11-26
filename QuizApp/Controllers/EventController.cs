@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace QuizApp.Controllers.Requests
 {
     [Authorize]
-    [Route("api/event")]
+    [Route("api/events")]
     public class EventController : Controller
     {
         QuizDbRepo _repo;
@@ -21,9 +21,9 @@ namespace QuizApp.Controllers.Requests
         }
 
         [HttpPost("create")]
-        public Event Create([FromBody]Event Event)
+        public int Create([FromBody]Event _event)
         {
-            return _repo.CreateEvent(Event, _userid);
+            return _repo.CreateEvent(_event);
         }
 
         [HttpGet("{id}")]
@@ -33,62 +33,62 @@ namespace QuizApp.Controllers.Requests
         }
 
         [HttpPut("edit")]
-        public Event Edit([FromBody]Event Event)
+        public int Edit([FromBody]Event _event)
         {
-            return _repo.Modify(Event);
+            return _repo.Edit(_event);
         }
 
-        [HttpGet("getall")]
+        [HttpGet("getAll")]
         public JsonResult GetAll()
         {
             ICollection<Event> events = _repo.GetAllEvents();
             return new JsonResult(events);
         }
 
-        [HttpGet("getmoderator")]
+        [HttpGet("getByMod")]
         public JsonResult GetByModerator()
         {
-            ICollection<Event> events = _repo.GetAllModeratedEvents(_userid);
+            ICollection<Event> events = _repo.GetEventsByModerator(_userid);
             return new JsonResult(events);
         }
 
-        [HttpGet("getmoderatorupcomming")]
+        [HttpGet("getFutureByMod")]
         public JsonResult GetByModeratorUpcomming()
         {
             ICollection<Event> events = _repo.GetAllUpcommingModeratedEvents(_userid);
             return new JsonResult(events);
         }
 
-        [HttpGet("getmoderatorcomplete")]
+        [HttpGet("getPastByMod")]
         public JsonResult GetByModeratorComplete()
         {
             ICollection<Event> events = _repo.GetAllCompletedEventsByMod(_userid);
             return new JsonResult(events);
         }
 
-        [HttpGet("getallupcomming")]
+        [HttpGet("getFutureByUser")]
         public JsonResult GetAllUpcomming()
         {
             ICollection<Event> events = _repo.GetAllUpcommingEvents();
             return new JsonResult(events);
         }
 
-        [HttpGet("getallcompleted")]
+        [HttpGet("getAllCompleted")]
         public JsonResult GetAllCompleted()
         {
             ICollection<Event> events = _repo.GetAllCompletedEvents();
             return new JsonResult(events);
         }
 
-        [HttpGet("getalluserparticipat")]
-        public JsonResult GetAllUserEventsParticipant()
+        [HttpGet("getAllByParticipant")]
+        public JsonResult GetAllByParticipant()
         {
             ICollection<Event> events = _repo.GetAllUserEvents(_userid);
             return new JsonResult(events);
         }
 
-        [HttpGet("getalluser")]
-        public JsonResult GetAllUserEvents()
+        [HttpGet("getAllByUser")]
+        public JsonResult GetAllByUser()
         {
             List<Event> events = _repo.GetAllUserEvents(_userid).ToList();
             events.AddRange(_repo.GetAllModeratedEvents(_userid));
@@ -102,7 +102,7 @@ namespace QuizApp.Controllers.Requests
             return new JsonResult(events);
         }
 
-        [HttpGet("getallupcomming")]
+        [HttpGet("getAllFuture")]
         public JsonResult GetAllUserUpcomming()
         {
             ICollection<Event> events = _repo.GetAllUserUpcommingEvents(_userid);
@@ -110,8 +110,8 @@ namespace QuizApp.Controllers.Requests
         }
 
         [AllowAnonymous]
-        [HttpGet("getallactive")]
-        public JsonResult IsActive()
+        [HttpGet("getAllActive")]
+        public JsonResult GetAllActive()
         {
             ICollection<Event> events = _repo.GetAllActiveEvents();
             return new JsonResult(events);

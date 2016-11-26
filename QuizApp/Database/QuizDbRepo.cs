@@ -18,39 +18,40 @@ namespace QuizApp.Database
 
         internal User GetUser(LoginRequest Req)
         {
-            return _context.Users.Where(x => x.UID == Req.uid && x.Vendor == Req.vendor).SingleOrDefault();
-            
-        }
+            User user;
 
-        internal User AddUser(LoginRequest Req)
-        {
-            var user = new User { Email = Req.email, Name = Req.name, Nick = Req.nick, UID = Req.uid, Vendor = Req.vendor };
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            if(_context.Users.Any(x => x.UID == Req.uid && x.Vendor == Req.provider))
+            {
+                user = _context.Users.Single(x => x.UID == Req.uid && x.Vendor == Req.provider);
+            }
+            else
+            {
+                user = new User { Email = Req.email, Name = Req.name, UID = Req.uid, Vendor = Req.provider };
+                _context.Users.Add(user);
+                _context.SaveChanges();
+            }
             return user;
-
         }
 
-        internal Event CreateEvent(Event Event,int userid)
+        internal int CreateEvent(Event _event)
         {
-            Event.ModeratorId = userid;
-            _context.Events.Add(Event);
+            _context.Events.Add(_event);
             _context.SaveChanges();
-            return Event;
+            return _event.ID;
            
         }
 
-        internal Event Modify(Event Event)
+        internal int Edit(Event _event)
         {
-            var dbevent = _context.Events.SingleOrDefault(x => x.ID == Event.ID);
-            dbevent.Name = Event.Name;
-            dbevent.IsActive = Event.IsActive;
-            dbevent.Location = Event.Location;
-            dbevent.Description = Event.Description;
-            dbevent.Rules = Event.Rules;
-            dbevent.Prizes = Event.Prizes;
+            var dbevent = _context.Events.SingleOrDefault(x => x.ID == _event.ID);
+            dbevent.Name = _event.Name;
+            dbevent.IsActive = _event.IsActive;
+            dbevent.Location = _event.Location;
+            dbevent.Description = _event.Description;
+            dbevent.Rules = _event.Rules;
+            dbevent.Prizes = _event.Prizes;
             _context.SaveChanges();
-            return dbevent;
+            return dbevent.ID;
         }
 
         internal ICollection<Event> GetAllUserUpcommingEvents(int userid)
@@ -65,8 +66,12 @@ namespace QuizApp.Database
 
         internal Event GetEvent(int id)
         {
-            return GetAllEvents()
-                .Single(x => x.ModeratorId == id);
+            return _context.Events.Single(x => x.ID == id);
+        }
+
+        internal ICollection<Event> GetEventsByModerator(int modID)
+        {
+            return GetAllEvents().Where(x => x.ModeratorId == modID).ToList();
         }
 
         internal ICollection<Event> GetAllEvents()
@@ -81,18 +86,9 @@ namespace QuizApp.Database
                 .ToList();
         }
 
-        internal ICollection<Event> GetAllUserEvents(int userid)
+        internal ICollection<Event> GetAllUserEvents(int userID)
         {
-            var User = _context.Users.Include(x => x.Teams)
-                .ThenInclude(x => x.Team)
-                    .ThenInclude(x => x.Events)
-                        .ThenInclude(x => x.Event)
-                .ToList();
-
-            return User.SelectMany(x => x.Teams)
-                        .SelectMany(x => x.Team.Events)
-                        .Select(x => x.Event)
-                        .ToList();
+            return GetAllEvents().Where(x => x.TeamEvent.Any(y => y.Team.TeamMembers.Any(z => z.ID == userID))).ToList();
         }
 
         internal ICollection<Event> GetAllModeratedEvents(int userid)

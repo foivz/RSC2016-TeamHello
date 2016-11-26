@@ -2,9 +2,9 @@
 
 angular.module('app').factory('loginService', LoginService);
 
-LoginService.$inject = ['$q', '$rootScope'];
+LoginService.$inject = ['$q', '$rootScope', '$http'];
 
-function LoginService($q, $rootScope) {
+function LoginService($q, $rootScope, $http) {
     var user;
     var token;
 
@@ -23,7 +23,7 @@ function LoginService($q, $rootScope) {
     })
 
     function loginUser(user) {
-        $http.post('/api/users/login', user)
+        $http.post('/api/auth/login', user)
         .then(function (result) {
             token = result.data;
 

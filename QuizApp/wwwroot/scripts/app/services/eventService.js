@@ -17,7 +17,7 @@ function EventService($http, loginService) {
     };
 
     function getEvent(id) {
-        return $http.get('api/events/get/' + id);
+        return $http.get('api/events/' + id);
     };
 
     function getEvents() {
@@ -42,6 +42,10 @@ function EventService($http, loginService) {
 
     function getFutureEventsByUser() {
         return $http.get('api/events/getFutureByUser');
+    };
+
+    function getFutureEvents() {
+        return $http.get('api/events/getFuture');
     };
 
     function activateEvent(event) {
