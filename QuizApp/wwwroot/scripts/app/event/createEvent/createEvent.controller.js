@@ -2,15 +2,17 @@
 
 angular.module('app').controller('createEventController', CreateEventController);
 
-CreateEventController.$inject = ['$state', 'eventService'];
+CreateEventController.$inject = ['$state', 'eventService', '$stateParams'];
 
-function CreateEventController($state, eventService) {
+function CreateEventController($state, eventService, $stateParams) {
     var vm = this;
 
     vm.event = {};
 
     vm.createEvent = function () {
-        eventService.creatEvent(vm.event)
+        event.UserID = $stateParams.userID;
+
+        eventService.createEvent(vm.event)
         .then(function (result) {
             var eventID = result.data;
 
