@@ -25,7 +25,8 @@ namespace Evidencija.Auth
         {
             var Claims = new Claim[] {
                 new Claim("UserId", Convert.ToString(User.UID)),
-                new Claim("Vendor", Convert.ToString(User.Vendor))
+                new Claim("Vendor", Convert.ToString(User.Vendor)),
+                new Claim("UserID", Convert.ToString(User.ID))
             };
 
             DateTime Expires = DateTime.UtcNow.AddMinutes(ExpiresInMinutes);

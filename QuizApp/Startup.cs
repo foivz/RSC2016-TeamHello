@@ -54,6 +54,7 @@ namespace QuizApp
             services.AddSingleton<TokenAuthenticationOptions>(_tokenOptions);
             services.AddSingleton<JwtTokenProvider>();
             services.AddSingleton<IConfiguration>(Config);
+            services.AddScoped<QuizDbRepo>();
             services.AddMvc();
         }
 

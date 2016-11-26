@@ -8,7 +8,7 @@ namespace QuizApp.Database.Model
         public int EventId { get; set; }
         public int TeamId { get; set; }
 
-        public Team Team { get; set; }
-        public Event Event { get; set; }
+        public virtual Team Team { get; set; }
+        public virtual Event Event { get; set; }
     }
 }
