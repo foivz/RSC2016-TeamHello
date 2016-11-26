@@ -1,0 +1,26 @@
+User
+	Teams (IsCaptain, IsntCaptain)
+	Answers
+	Events(IsParticipant,IsModerator)
+
+Team
+	Captain
+	Participants (IncludesCaptain)
+	Events
+
+Events
+	Moderator
+	Participants(ExcludesModerator)
+	Questions
+
+Questions
+	Events
+	UserAnswers
+	Answers
+
+Answer
+	Question
+
+UserAnswer
+	Question
+	User
