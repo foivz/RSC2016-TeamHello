@@ -39,7 +39,14 @@ function LoginService($q, $rootScope) {
         return user;
     };
 
+    function getCurrentToken() {
+        return user;
+    };
+
     return {
-        loginUser: loginUser
+        loginUser: loginUser,
+        logoutUser: logoutUser,
+        getCurrentUser: getCurrentUser,
+        getCurrentToken: getCurrentToken
     };
 };

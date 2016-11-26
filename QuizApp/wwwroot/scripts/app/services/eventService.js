@@ -2,9 +2,11 @@
 
 angular.module('app').factory('eventService', EventService);
 
-EventService.$inject = ['$http'];
+EventService.$inject = ['$http', 'loginService'];
 
-function EventService($http) {
+function EventService($http, loginService) {
+
+    $http.defaults.headers.common['Authorization'] = loginService.getCurrentToken();
 
     function createEvent(event) {
         return $http.post('/api/events/create', event);
