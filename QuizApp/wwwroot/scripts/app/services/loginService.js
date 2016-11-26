@@ -28,7 +28,7 @@ function LoginService($q, $rootScope) {
         socialLoginService.logout();
     };
 
-    function getCurrentUser(user) {
+    function getCurrentUser() {
         return user;
     };
 
