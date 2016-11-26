@@ -12,6 +12,7 @@ namespace QuizApp.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=RSC2016;Trusted_Connection=True;");
             base.OnConfiguring(optionsBuilder);
         }
 
