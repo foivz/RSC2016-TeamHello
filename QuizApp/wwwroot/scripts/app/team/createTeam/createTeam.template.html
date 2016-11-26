@@ -1,0 +1,9 @@
+﻿<form role="form" name="createTeamForm" ng-submit="vm.createTeam()" novalidate>
+    <fieldset>
+        <label>Team Name</label>
+        <div class="form-group">
+            <input ng-model="vm.teamName" required class="form-control" placeholder="Team name" type="text">
+        </div>
+        <button type="submit" ng-disabled="createTeamForm.$invalid" class="btn btn-lg btn-success btn-block">Submit</button>
+    </fieldset>
+</form>

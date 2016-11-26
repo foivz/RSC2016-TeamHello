@@ -1,0 +1,87 @@
+﻿<form role="form" name="createEventForm" ng-submit="vm.createEvent()" novalidate>
+    <fieldset>
+        
+        <div class="form-group">
+            <label>Name</label>
+            <input ng-model="vm.event.Name" required placeholder="Name" type="text">
+        </div>
+
+        <div class="form-group">
+            <label>Location</label>
+            <input ng-model="vm.event.Location" required placeholder="Location" type="text">
+        </div>
+
+        <div class="form-group">
+            <label>Date</label>
+            <input ng-model="vm.event.Date" required placeholder="Location" type="datetime">
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea ng-model="vm.event.Description" rows="3" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Prizes</label>
+            <textarea ng-model="vm.event.Prizes" rows="3" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Rules</label>
+            <textarea ng-model="vm.event.Rules" rows="3" class="form-control"></textarea>
+        </div>
+
+        <button ng-click="vm.addQuestionField()">Add question</button>
+        <div ng-repeat="question in vm.questions">
+            <div class="form-group">
+                <label>Question</label>
+                <input ng-model="question.Text" placeholder="Question" type="text">
+            </div>
+            <div class="form-group">
+                <label>Question type</label>
+                <select ng-model="question.Type" ng-options="questionType.id as questionType.label for questionType in vm.questionTypes.asList"></select>
+            </div>
+            <div ng-show="question.Type == 0">
+                <button ng-click="vm.addAnswerField(question)">Add answer</button>
+                <div ng-repeat="answer in question.Answers">
+                    <div class="form-group">
+                        <label>Answer</label>
+                        <input ng-model="answer.Text" placeholder="Answer" type="text">
+                        <div ng-show="!question.Answers.some(answer => answer.IsCorrect)">
+                            <label>Correct</label>
+                            <input ng-model="answer.IsCorrect" type="checkbox">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="question.Type == 1">
+                <button ng-click="vm.addAnswerField(question)">Add answer</button>
+                <div ng-repeat="answer in question.Answers">
+                    <div class="form-group">
+                        <label>Answer</label>
+                        <input ng-model="answer.Text" placeholder="Answer" type="text">
+                        <label>Correct</label>
+                        <label>
+                            <input ng-model="answer.IsCorrect" type="checkbox">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="question.Type == 2">
+                <label>Answer</label>
+                <input ng-model="answer.Text" placeholder="Answer" type="text">
+            </div>
+            <div ng-show="question.Type == 3">
+                <button ng-click="vm.addAnswerField(question)">Add answer</button>
+                <div ng-repeat="answer in question.Answers">
+                    <div class="form-group">
+                        <label>Answer</label>
+                        <input ng-model="answer.Text" placeholder="Answer" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" ng-disabled="createEventForm.$invalid">Spremi</button>
+    </fieldset>
+</form>
