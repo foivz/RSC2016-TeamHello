@@ -12,8 +12,7 @@ namespace QuizApp.Database.Model
 
         [ForeignKey("ModeratorId")]
         public User Moderator { get; set; }
-        public ICollection<TeamEvent> Teams { get; set; }
-        public ICollection<Event> ModEvents { get; set; }
+        public ICollection<TeamEvent> TeamEvent { get; set; }
         public ICollection<Question> Questions { get; set; }
     }
 }

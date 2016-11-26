@@ -7,8 +7,8 @@ namespace QuizApp.Database.Model
     {
         public string Input { get; set; }
         public bool IsCorrect { get; set; }
-        public int QuestionId { get; set; }
-        public int UserId { get; set; }
+        public int? QuestionId { get; set; }
+        public int? UserId { get; set; }
 
         [ForeignKey("QuestionId")]
         public Question Question { get; set; }

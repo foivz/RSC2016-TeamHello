@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using QuizApp.Database.Model;
-using System.Linq;
 
 namespace QuizApp.Database
 {
@@ -13,7 +12,7 @@ namespace QuizApp.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-Q2LUF87\SQLEXPRESS;Initial Catalog=RSC2016Test;Integrated Security=True");
+            base.OnConfiguring(optionsBuilder);
         }
 
         public DbSet<User> Users { get; set; }
@@ -31,34 +30,27 @@ namespace QuizApp.Database
 
             modelBuilder.Entity<TeamEvent>()
                 .HasOne(x => x.Team)
-                .WithMany(x => x.Events)
-                .HasForeignKey(x => x.TeamId)
-                .Metadata.DeleteBehavior = DeleteBehavior.Restrict;
+                .WithMany(xz => xz.Events)
+                .HasForeignKey(x => x.TeamId);
 
             modelBuilder.Entity<TeamEvent>()
                 .HasOne(x => x.Event)
-                .WithMany(x => x.Teams)
-                .HasForeignKey(x => x.EventId)
-                .Metadata.DeleteBehavior = DeleteBehavior.Restrict;
+                .WithMany(xz => xz.TeamEvent)
+                .HasForeignKey(x => x.EventId);
 
             modelBuilder.Entity<TeamUser>().HasKey(x => new { x.TeamId, x.UserId });
 
             modelBuilder.Entity<TeamUser>()
                 .HasOne(x => x.Team)
-                .WithMany(x => x.Participants)
+                .WithMany(xz => xz.TeamMembers)
                 .HasForeignKey(x => x.TeamId)
-                .Metadata.DeleteBehavior = DeleteBehavior.Restrict;
+                .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity< TeamUser>()
+            modelBuilder.Entity<TeamUser>()
                 .HasOne(x => x.User)
-                .WithMany(x => x.Teams)
+                .WithMany(xz => xz.Teams)
                 .HasForeignKey(x => x.UserId)
-                .Metadata.DeleteBehavior = DeleteBehavior.Restrict;
-
-            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
-            {
-                relationship.DeleteBehavior = DeleteBehavior.Restrict;
-            }
+                .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);
         }

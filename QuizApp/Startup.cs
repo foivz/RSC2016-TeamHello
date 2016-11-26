@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using QuizApp.Database;
-using System;
 using System.IO;
 
 namespace QuizApp
@@ -13,20 +12,21 @@ namespace QuizApp
     public class Startup
     {
         public IConfiguration Config { get; private set; }
-        private bool isDevelopment;
-        public void Configure(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env)
         {
             Config = new ConfigurationBuilder()
                .SetBasePath(Directory.GetCurrentDirectory())
                .AddJsonFile("config.json")
+               .AddEnvironmentVariables()
                .Build();
-            isDevelopment = (Config["IsDevelopment"] != null);
+            Config["IsDev"] = env.IsDevelopment().ToString();
         }
 
-        public void ConfigureServices(IServiceCollection services, IHostingEnvironment env)
+        public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<QuizDbContext>(options => options.UseSqlServer(/*(isDevelopment) ? Config["ConnectionStrings:LocalConnection"] : Config["ConnectionStrings:ServerConnection"])*/@"Data Source=DESKTOP-Q2LUF87\SQLEXPRESS;Initial Catalog=RSC2016Test;Integrated Security=True"));
+            services.AddDbContext<QuizDbContext>(options => options.UseSqlServer((Config["IsDev"] == "True") ? Config["ConnectionStrings:LocalConnection"] : Config["ConnectionStrings:ServerConnection"]));
             services.AddSingleton<IConfiguration>(Config);
+            services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -40,6 +40,7 @@ namespace QuizApp
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseMvc();
         }
     }
 }
