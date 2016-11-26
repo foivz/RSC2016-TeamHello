@@ -12,7 +12,6 @@ function CreateTeamController($state,teamServcie) {
         .then(function (result) {
         vm.teamID = result.data;
 
-
         return $state.go('inviteToTeam', { id: vm.teamID });
     });
     };

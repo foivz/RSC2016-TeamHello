@@ -26,4 +26,4 @@ function QuestionTypeService() {
         getQuestionTypes: getQuestionTypes,
         getQuestionType: getQuestionType
     };
-};
+}
