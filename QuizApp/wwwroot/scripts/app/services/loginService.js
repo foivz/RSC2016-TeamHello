@@ -25,6 +25,7 @@ function LoginService($q, $rootScope, $http) {
     function loginUser(user) {
         $http.post('/api/auth/login', user)
         .then(function (result) {
+            console.log(result);
             token = result.data;
 
             return token;

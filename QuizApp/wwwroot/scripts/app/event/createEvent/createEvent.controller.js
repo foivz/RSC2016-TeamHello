@@ -2,9 +2,9 @@
 
 angular.module('app').controller('createEventController', CreateEventController);
 
-CreateEventController.$inject = ['$state', 'eventService', 'loginService'];
+CreateEventController.$inject = ['$state', 'eventService', 'loginService', 'questionService'];
 
-function CreateEventController($state, eventService, loginService) {
+function CreateEventController($state, eventService, loginService, questionService) {
     var vm = this;
 
     vm.event = {};
@@ -32,11 +32,11 @@ function CreateEventController($state, eventService, loginService) {
 
     vm.addQuestionField = function () {
         vm.questions.push({});
-        vm.questions[vm.questions.length() - 1].Answers = [];
+        vm.questions[vm.questions.length - 1].Answers = [];
     }
 
     vm.addAnswerField = function (question) {
         question.Answers.push({});
-        question.Answers[question.Answers.length() - 1] = {};
+        question.Answers[question.Answers.length - 1] = {};
     }
 };

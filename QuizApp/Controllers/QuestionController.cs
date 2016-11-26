@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace QuizApp.Controllers.Requests
 {
     [Authorize]
-    [Route("api/question")]
+    [Route("api/questions")]
     public class QuestionController : Controller
     {
         QuestionRepository _repo;
