@@ -8,7 +8,7 @@ function MyEventsController($state, eventService,loginService) {
     var vm = this;
 
     vm.currentUser = loginService.getCurrentUser();
-    vm.futureEvents = eventService.getFutureEventsByMod(vm.currentUser.ID);
+    vm.futureEvents = eventService.getFutureEventsByUser(vm.currentUser.ID);
 
     vm.isModerator = function (moderatorID) {
         if (moderatorID == currentUser.ID) {

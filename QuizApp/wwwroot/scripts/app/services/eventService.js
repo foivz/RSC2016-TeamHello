@@ -40,6 +40,10 @@ function EventService($http, loginService) {
         return $http.get('api/events/getFutureByMod/' + id);
     };
 
+    function getFutureEventsByUser(id) {
+        return $http.get('api/events/getFutureByUser/' + id);
+    };
+
     function activateEvent(event) {
         event.IsActive = true;
         editEvent(event);
