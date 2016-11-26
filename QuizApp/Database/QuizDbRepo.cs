@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace QuizApp.Database
 {
-    public class QuizDbRepo
+    public partial class QuizDbRepo
     {
         private QuizDbContext _context;
 
@@ -53,39 +53,76 @@ namespace QuizApp.Database
             return dbevent;
         }
 
+        internal ICollection<Event> GetAllUserUpcommingEvents(int userid)
+        {
+            return GetAllUserEvents(userid).Where(x => x.Date > DateTime.Now).ToList();
+        }
+
+        internal ICollection<Event> GetAllUserCompletedEvents(int userid)
+        {
+            return GetAllUserEvents(userid).Where(x => x.Date < DateTime.Now).ToList();
+        }
+
         internal Event GetEvent(int id)
         {
-            var Event = _context.Events
+            return GetAllEvents()
+                .Single(x => x.ModeratorId == id);
+        }
+
+        internal ICollection<Event> GetAllEvents()
+        {
+            return _context.Events
                 .Include(x => x.Moderator)
                 .Include(x => x.Questions)
                     .ThenInclude(q => q.UserAnswers)
                 .Include(x => x.TeamEvent)
                     .ThenInclude(t => t.Team)
                         .ThenInclude(t => t.TeamMembers)
-                .Single(x => x.ModeratorId == id);
-
-            return Event;
+                .ToList();
         }
 
-        internal ICollection<Event> GetAllEvents(int userid)
+        internal ICollection<Event> GetAllUserEvents(int userid)
         {
-            var 
-            return 
+            var User = _context.Users.Include(x => x.Teams)
+                .ThenInclude(x => x.Team)
+                    .ThenInclude(x => x.Events)
+                        .ThenInclude(x => x.Event)
+                .ToList();
+
+            return User.SelectMany(x => x.Teams)
+                        .SelectMany(x => x.Team.Events)
+                        .Select(x => x.Event)
+                        .ToList();
         }
 
-        internal ICollection<Event> GetAllModeratedEvents(int _userid)
+        internal ICollection<Event> GetAllModeratedEvents(int userid)
         {
-            throw new NotImplementedException();
+            return GetAllEvents().Where(x => x.ModeratorId == userid).ToList();
         }
 
-        internal Event Modify(Event Event,int userid)
+        internal ICollection<Event> GetAllActiveEvents()
         {
-            throw new NotImplementedException();
+            return GetAllEvents().Where(x => x.IsActive).ToList();
         }
 
-        internal ICollection<Event> GetAllCompletedEvents(int _userid)
+        internal ICollection<Event> GetAllUpcommingModeratedEvents(int userid)
         {
-            throw new NotImplementedException();
+            return GetAllModeratedEvents(userid).Where(x => x.Date > DateTime.Now).ToList();
+        }
+
+        internal ICollection<Event> GetAllCompletedEventsByMod(int userid)
+        {
+            return GetAllModeratedEvents(userid).Where(x => x.Date < DateTime.Now).ToList();
+        }
+
+        internal ICollection<Event> GetAllUpcommingEvents()
+        {
+            return GetAllEvents().Where(x => x.Date > DateTime.Now).ToList();
+        }
+
+        internal ICollection<Event> GetAllCompletedEvents()
+        {
+            return GetAllEvents().Where(x => x.Date < DateTime.Now).ToList();
         }
     }
 }
