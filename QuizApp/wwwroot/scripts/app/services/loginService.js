@@ -39,6 +39,10 @@ function LoginService($q, $rootScope) {
         return user;
     };
 
+    function getCurrentToken() {
+        return user;
+    };
+
     return {
         loginUser: loginUser
     };
