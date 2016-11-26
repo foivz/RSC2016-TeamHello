@@ -1,11 +1,20 @@
-﻿<div ng-repeat="event in vm.events">
-    {{vm.event.Name}}
-    {{vm.event.Location}}
-    {{vm.event.Date}}
-    {{vm.event.Description}}
-    {{vm.event.Prizes}}
-    {{vm.event.Rules}}
+﻿<div class="login-wrap">
+    <div class="login-main col-xs-8 col-xs-offset-2">
+        <div id="login-title">
+            QUIZ.UP
+        </div>
+        <div class="login-input-area">
+            <p id="login-description">
+                Log in with your Facebook or Google account
+            </p>
+            <div class="login-button-wrap">
+                    <button g-login type="button" class="login-button login-button-facebook"><p class="login-button-text">LOGIN WITH FACEBOOK</p></button>
+                    <br />
+                    <button fb-login type="button" class="login-button login-button-google"><p class="login-button-text">LOGIN WITH GOOGLE</p></button>
+            </div>
+            <p id="nickname-info">
+                If this is your first time here, you will be asked to choose a nickname
+            </p>
+        </div>
+    </div>
 </div>
-
-<button g-login type="button">Google Login</button>
-<button fb-login type="button">facebook Login</button>
