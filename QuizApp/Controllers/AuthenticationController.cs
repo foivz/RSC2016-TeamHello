@@ -23,17 +23,7 @@ namespace QuizApp.Controllers
         public string Login([FromBody]LoginRequest req)
         {
             var user = _repo.GetUser(req);
-            if (user == default(User)) return "";
 
-            var token = _tokenProvider.Create(user, 6000).Token;
-
-            return token;
-        }
-
-        [HttpPost("register")]
-        public string Register([FromBody]LoginRequest req)
-        {
-            var user = _repo.AddUser(req);
             var token = _tokenProvider.Create(user, 6000).Token;
 
             return token;

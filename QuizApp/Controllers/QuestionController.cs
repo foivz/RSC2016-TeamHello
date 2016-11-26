@@ -15,7 +15,7 @@ namespace QuizApp.Controllers.Requests
         QuestionRepository _repo;
         AnswerRepository _answerRepo;
         private int _userid;
-        public QuestionController(QuestionRepository repo, AnswerRepository answerRepo)
+        public QuestionController([FromBody]QuestionRepository repo, AnswerRepository answerRepo)
         {
             _repo = repo;
             _answerRepo = answerRepo;
