@@ -10,6 +10,7 @@ namespace QuizApp.Database.Model
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public int ModeratorId { get; set; }
+        public bool IsActive { get; set; }
 
         [ForeignKey("ModeratorId")]
         public User Moderator { get; set; }
