@@ -10,7 +10,6 @@ function CreateEventStateProvider($stateProvider) {
         url: '/create-event',
         templateUrl: '/./../../scripts/app/event/createEvent/createEvent.template.html',
         controller: 'createEventController',
-        controllerAs: 'vm',
-        params: { userID: null}
+        controllerAs: 'vm'
     });
 };
