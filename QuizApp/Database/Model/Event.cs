@@ -1,4 +1,5 @@
 ﻿using QuizApp.Database.Model.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -6,8 +7,8 @@ namespace QuizApp.Database.Model
 {
     public class Event : ModelBase
     {
-        public string Nick { get; set; }
-        public string Email { get; set; }
+        public string Name { get; set; }
+        public DateTime Date { get; set; }
         public int ModeratorId { get; set; }
 
         [ForeignKey("ModeratorId")]
