@@ -8,7 +8,7 @@ using QuizApp.Database;
 namespace QuizApp.Migrations
 {
     [DbContext(typeof(QuizDbContext))]
-    [Migration("20161126180047_Init")]
+    [Migration("20161126232225_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,11 +42,19 @@ namespace QuizApp.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<string>("Description");
+
                     b.Property<bool>("IsActive");
+
+                    b.Property<string>("Location");
 
                     b.Property<int>("ModeratorId");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("Prizes");
+
+                    b.Property<string>("Rules");
 
                     b.HasKey("ID");
 

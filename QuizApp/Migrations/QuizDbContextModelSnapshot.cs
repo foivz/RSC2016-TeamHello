@@ -41,11 +41,19 @@ namespace QuizApp.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<string>("Description");
+
                     b.Property<bool>("IsActive");
+
+                    b.Property<string>("Location");
 
                     b.Property<int>("ModeratorId");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("Prizes");
+
+                    b.Property<string>("Rules");
 
                     b.HasKey("ID");
 

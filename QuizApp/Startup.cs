@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using Evidencija.Auth;
 using Evidencija.Encription;
+using QuizApp.Database.Repositories;
 
 namespace QuizApp
 {
@@ -41,7 +42,7 @@ namespace QuizApp
                       .RequireAuthenticatedUser().Build();
               });
 
-              _RSAKey = new RsaSecurityKey(RSAKeyUtils.GetRandomKey());
+            _RSAKey = new RsaSecurityKey(RSAKeyUtils.GetRandomKey());
 
               _tokenOptions = new TokenAuthenticationOptions
               (
@@ -57,6 +58,7 @@ namespace QuizApp
             services.AddScoped<QuizDbRepo>();
             services.AddScoped<QuestionRepository>();
             services.AddScoped<AnswerRepository>();
+            services.AddScoped<TeamRepository>();
             services.AddMvc();
         }
 

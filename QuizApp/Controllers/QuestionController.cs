@@ -4,7 +4,6 @@ using QuizApp.Database;
 using QuizApp.Database.Model;
 using System;
 using Microsoft.AspNetCore.Authorization;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace QuizApp.Controllers.Requests

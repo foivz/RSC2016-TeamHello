@@ -47,9 +47,13 @@ namespace QuizApp.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Date = table.Column<DateTime>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
+                    Location = table.Column<string>(nullable: true),
                     ModeratorId = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    Prizes = table.Column<string>(nullable: true),
+                    Rules = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
