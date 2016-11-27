@@ -6,8 +6,6 @@ LoginService.$inject = ['$q', '$rootScope', '$http'];
 
 function LoginService($q, $rootScope, $http) {
     $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
-        user = userDetails;
-
         loginUser(userDetails);
     });
 

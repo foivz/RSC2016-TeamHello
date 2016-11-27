@@ -2,9 +2,9 @@
 
 angular.module('app').controller('getEventController', GetEventController);
 
-GetEventController.$inject = ['eventService'];
+GetEventController.$inject = ['eventService', '$stateParams'];
 
-function GetEventController(eventService) {
+function GetEventController(eventService, $stateParams) {
     var vm = this;
 
     eventService.getEvent($stateParams.id)
