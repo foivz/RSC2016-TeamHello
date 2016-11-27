@@ -284,7 +284,7 @@ body {
 }
 
 .quiz {
-    width:25%;
+    width:40%;
     background-color: white;
     border-radius: 5px;
 }
@@ -297,9 +297,37 @@ body {
 }
 
 .quiz-location {
-
+    font-family:opensans-semibold;
 }
 
 .quiz-date {
+    font-family:opensans-semibold;
+}
 
+.quiz-details {
+    padding-left: 5%;
+    padding-right: 1%;
+    padding-top: 3%;
+    padding-bottom: 5%;
+}
+
+.strelica {
+    height: 20px;
+}
+
+.join-button{
+    display: flex;
+    background-color: #1ACB50;
+    border: none;
+    border-bottom: 3px solid #1ABA4B;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.join-text{
+    font-family: panton-blackitaliccaps;
+    color:white;
+    margin-top: auto;
+    margin-bottom: auto;
 }
