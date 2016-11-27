@@ -5,19 +5,23 @@ using QuizApp.Database.Repositories;
 
 namespace QuizApp.Controllers
 {
-    [Authorize]
-    [Route("api/team")]
+    [Route("api/teams")]
     public class TeamController : Controller
     {
         private TeamRepository _repo;
-
 
         public TeamController(TeamRepository repo)
         {
             _repo = repo;
         }
 
-        [HttpGet("all")]
+        [HttpGet("get/{id}")]
+        public JsonResult GetAll(int id)
+        {
+            return new JsonResult(_repo.GetById(id));
+        }
+
+        [HttpGet("getAll")]
         public JsonResult GetAll()
         {
             return new JsonResult(_repo.GetAll());

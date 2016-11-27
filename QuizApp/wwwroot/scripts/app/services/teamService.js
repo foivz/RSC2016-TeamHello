@@ -6,12 +6,12 @@ TeamService.$inject = ['$http'];
 
 function TeamService($http) {
 
-    function createTeam(team) {
-        return $http.post('api/teams/crate', team);
+    function createTeam(data) {
+        return $http.post('api/teams/create', data);
     }
 
     function getTeam(id) {
-        return $http.get('api/teams/get'+ id);
+        return $http.get('api/teams/get/'+ id);
     }
 
     function getTeams() {

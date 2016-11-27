@@ -18,12 +18,16 @@ namespace QuizApp.Database.Repositories
         internal ICollection<Team> GetAll()
         {
             return _context.Teams
-                 //.Include(x => x.Captain)
                  .Include(x => x.TeamMembers)
                      .ThenInclude(x => x.User)
                  .Include(x => x.Events)
                      .ThenInclude(x => x.Event)
                  .ToList();
+        }
+
+        internal Team GetById(int id)
+        {
+            return _context.Teams.SingleOrDefault(x => x.ID == id);
         }
 
         internal Team CreateTeam(Team team)
