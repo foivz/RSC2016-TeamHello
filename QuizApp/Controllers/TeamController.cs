@@ -24,10 +24,17 @@ namespace QuizApp.Controllers
         }
 
         [HttpPost("create")]
-        public string CreateTeam([FromBody]Team team)
+        public JsonResult CreateTeam([FromBody]Team team)
         {
-            _repo.CreateTeam(team);
-            return "";
+            var createdTeam =_repo.CreateTeam(team);
+            return new JsonResult(createdTeam);
+        }
+
+        [HttpPost("join/{teamid}/{userid}")]
+        public JsonResult CreateTeam(int teamid, int userid)
+        {
+            var joinTeam = _repo.JoinTeam(teamid, userid);
+            return new JsonResult(joinTeam);
         }
     }
 }

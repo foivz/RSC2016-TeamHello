@@ -26,9 +26,20 @@ namespace QuizApp.Database.Repositories
                  .ToList();
         }
 
-        internal void CreateTeam(Team team)
+        internal Team CreateTeam(Team team)
         {
-            throw new NotImplementedException();
+            _context.Teams.Add(team);
+            _context.SaveChanges();
+            return team;
+
+        }
+
+        internal object JoinTeam(int teamid, int userid)
+        {
+            var TeamUser = new TeamUser { UserId = userid, TeamId = teamid };
+            _context.TeamUsers.Add(TeamUser);
+            _context.SaveChanges();
+            return TeamUser;
         }
     }
 }

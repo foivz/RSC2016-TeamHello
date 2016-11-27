@@ -26,5 +26,11 @@ namespace QuizApp.Controllers
 
             return new JsonResult(user);
         }
+
+        [HttpGet("getuser/{id}")]
+        public JsonResult GetUser(int id)
+        {
+            return new JsonResult(_repo.GetUserById(id));
+        }
     }
 }
