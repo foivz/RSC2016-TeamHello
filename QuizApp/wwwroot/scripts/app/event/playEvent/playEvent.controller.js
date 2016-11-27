@@ -6,6 +6,7 @@ PlayEventController.$inject = ['eventService', '$stateParams'];
 
 function PlayEventController(eventService, $stateParams) {
     var vm = this;
+    vm.questionNumber = 1;
 
     eventService.playEvent($stateParams.id)
     .then(function (result) {
