@@ -2,16 +2,19 @@
 
 angular.module('app').controller('myEventsController', MyEventsController);
 
-MyEventsController.$inject = ['$state','eventService','loginService'];
+MyEventsController.$inject = ['$state','eventService','$stateParams'];
 
-function MyEventsController($state, eventService,loginService) {
+function MyEventsController($state, eventService, $stateParams) {
     var vm = this;
 
-    vm.currentUser = loginService.getCurrentUser();
-    vm.futureEvents = eventService.getFutureEventsByUser(vm.currentUser.ID);
+    eventService.getFutureEventsByUser($stateParams.userId)
+    .then(function (result) {
+        vm.futureEvents = result.data;
+        console.log(vm.futureEvents);
+    });
 
     vm.isModerator = function (moderatorID) {
-        if (moderatorID == currentUser.ID) {
+        if (moderatorID == $stateParams.userId) {
             return true;
         }
         else {

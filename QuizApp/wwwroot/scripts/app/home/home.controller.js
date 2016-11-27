@@ -10,5 +10,6 @@ function HomeController(loginService, eventService) {
     eventService.getEvents()
     .then(function (result) {
         vm.events = result.data;
+        console.log(vm.events);
     });
 };
