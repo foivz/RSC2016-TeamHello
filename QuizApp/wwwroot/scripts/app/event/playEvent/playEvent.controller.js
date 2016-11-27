@@ -2,9 +2,9 @@
 
 angular.module('app').controller('playEventController', PlayEventController);
 
-PlayEventController.$inject = ['eventService'];
+PlayEventController.$inject = ['eventService', '$stateParams'];
 
-function PlayEventController(eventService) {
+function PlayEventController(eventService, $stateParams) {
     var vm = this;
 
     eventService.playEvent($stateParams.id)
