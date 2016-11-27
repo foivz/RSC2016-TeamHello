@@ -2,9 +2,9 @@
 
 angular.module('app').factory('loginService', LoginService);
 
-LoginService.$inject = ['$q', '$rootScope', '$http', 'userService'];
+LoginService.$inject = ['$q', '$rootScope', '$http', 'userService','$state'];
 
-function LoginService($q, $rootScope, $http, userService) {
+function LoginService($q, $rootScope, $http, userService, $state) {
     $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
         loginUser(userDetails);
     });
@@ -19,6 +19,7 @@ function LoginService($q, $rootScope, $http, userService) {
             userService.setUserId(result.data.id);
             console.log(userService.getUserId());
             console.log(result.data);
+            $state.go('home');
         });
     };
 
