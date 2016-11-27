@@ -19,7 +19,7 @@ function TeamService($http) {
     }
 
     function joinTeam(data) {
-        return $http.post('api/teams/join',data);
+        return $http.post('api/teams/join/'+data.token+'/'+data.id);
     }
 
     return {
