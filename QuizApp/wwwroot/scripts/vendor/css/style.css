@@ -222,5 +222,33 @@ body {
 
 .trophy {
     height:40%;
+    padding-left:20%;
 }
 
+.winning-team {
+    background-color:#0D9CDE;
+        color:white;
+}
+
+.lost{
+    padding-right:20%;
+    padding-left:10%;
+}
+
+.team-name {
+    padding-left: 30%;
+}
+
+.team-won{
+    padding-left:10%;
+}
+
+#table{
+    width:80%;
+    font-family:opensans-semibold;
+}
+
+.other-teams {
+    background-color:white;
+    border-bottom: 2px solid #D8D8D8;
+}
