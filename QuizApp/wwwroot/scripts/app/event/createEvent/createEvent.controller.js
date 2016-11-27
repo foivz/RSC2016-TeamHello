@@ -2,13 +2,15 @@
 
 angular.module('app').controller('createEventController', CreateEventController);
 
-CreateEventController.$inject = ['$state', 'eventService', 'loginService', 'questionService', '$stateParams'];
+CreateEventController.$inject = ['$state', 'eventService', 'loginService', 'questionService', '$stateParams', 'questionTypeService'];
 
-function CreateEventController($state, eventService, loginService, questionService, $stateParams) {
+function CreateEventController($state, eventService, loginService, questionService, $stateParams, questionTypeService) {
     var vm = this;
 
     vm.event = {};
     vm.questions = [];
+
+    vm.questionTypes = questionTypeService.getQuestionTypes();
 
     vm.createEvent = function () {
         vm.event.ModeratorID = $stateParams.userId;
