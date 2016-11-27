@@ -8,8 +8,6 @@ function homeStateProvider($stateProvider) {
     $stateProvider
     .state('home', {
         url: '/home',
-        templateUrl: '/./../../scripts/app/home/home.template.html',
-        controller: 'homeController',
-        controllerAs: 'vm'
+        templateUrl: '/./../../scripts/app/home/home.template.html'
     });
 };
