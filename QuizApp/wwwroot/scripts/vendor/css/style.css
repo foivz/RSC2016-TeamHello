@@ -204,8 +204,6 @@ body {
     margin-left: 3%;
 }
 
-    
-
 .add-btn-text {
     line-height: 200%;
     padding-top: 3%;
@@ -217,38 +215,36 @@ body {
 .news-section {
     margin-top: 15%;
     height: 100%;
-    margin-left: 5%
+    margin-left: 5%;
+    height: initial;
 }
 
-.trophy {
-    height:40%;
-    padding-left:20%;
+.section-title {
+    font-family:panton-blackitaliccaps;
+    display:flex;
 }
 
-.winning-team {
-    background-color:#0D9CDE;
-        color:white;
+.upcoming-quizes {
+    width: 90%;
 }
 
-.lost{
-    padding-right:20%;
-    padding-left:10%;
+.quiz {
+    width:25%;
+    background-color: white;
+    border-radius: 5px;
 }
 
-.team-name {
-    padding-left: 30%;
+.quiz-thumbnail {
+    width: 100%;
+    height: 50%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
-.team-won{
-    padding-left:10%;
+.quiz-location {
+
 }
 
-#table{
-    width:80%;
-    font-family:opensans-semibold;
-}
+.quiz-date {
 
-.other-teams {
-    background-color:white;
-    border-bottom: 2px solid #D8D8D8;
 }
