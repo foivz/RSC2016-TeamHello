@@ -1,0 +1,45 @@
+User
+	Teams (IsCaptain, IsntCaptain)
+	UserAnswers
+	Events(IsParticipant,IsModerator)
+
+	Nick
+	Email
+
+Team
+	Captain
+	Participants (IncludesCaptain)
+	Events
+
+	Name
+	IsValid(Conatins Required Number Of Users)
+
+Events
+	Moderator
+	Participants(ExcludesModerator)
+	Questions
+
+	Location
+	Desc
+	Rules
+
+Questions
+	Events
+	UserAnswers
+	Answers
+
+	Text
+	Type
+	Time
+
+Answer
+	Question
+
+	CorrectInput
+
+UserAnswer
+	Question
+	User
+
+	Input
+	IsCorrect

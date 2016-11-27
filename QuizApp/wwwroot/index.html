@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>QuizApp</title>
+    <link href="scripts/vendor/css/style.css" rel="stylesheet" />
+    <link href="scripts/vendor/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body ng-app="app" ng-cloak>
+
+    <div>
+        <div ui-view></div>
+    </div>
+
+    <script src="scripts/vendor/angular.min.js"></script>
+    <script src="scripts/vendor/angular-ui-router.min.js"></script>
+    <script src="scripts/vendor/js-enumeration-v.0.2.3.js"></script>
+
+    <script src="scripts/vendor/angularjs-social-login.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="scripts/app/app.module.js"></script>
+    <script src="scripts/app/app.config.js"></script>
+
+    <!--home-->
+    <script src="scripts/app/home/home.state.js"></script>
+
+    <!--team-->
+    <script src="scripts/app/team/createTeam/createTeam.controller.js"></script>
+    <script src="scripts/app/team/createTeam/createTeam.state.js"></script>
+    <script src="scripts/app/team/getTeam/getTeam.controller.js"></script>
+    <script src="scripts/app/team/getTeam/getTeam.state.js"></script>
+    <script src="scripts/app/team/getTeams/getTeams.controller.js"></script>
+    <script src="scripts/app/team/getTeams/getTeams.state.js"></script>
+    <script src="scripts/app/team/inviteToTeam/inviteToTeam.controller.js"></script>
+    <script src="scripts/app/team/inviteToTeam/inviteToTeam.state.js"></script>
+    <script src="scripts/app/team/joinTeam/joinTeam.controller.js"></script>
+    <script src="scripts/app/team/joinTeam/joinTeam.state.js"></script>
+
+    <!--events-->
+    <script src="scripts/app/event/createEvent/createEvent.controller.js"></script>
+    <script src="scripts/app/event/createEvent/createEvent.state.js"></script>
+    <script src="scripts/app/event/editEvent/editEvent.controller.js"></script>
+    <script src="scripts/app/event/editEvent/editEvent.state.js"></script>
+    <script src="scripts/app/event/getEvent/getEvent.controller.js"></script>
+    <script src="scripts/app/event/getEvent/getEvent.state.js"></script>
+    <script src="scripts/app/event/myEvents/myEvents.controller.js"></script>
+    <script src="scripts/app/event/myEvents/myEvents.state.js"></script>
+    <script src="scripts/app/event/playEvent/playEvent.controller.js"></script>
+    <script src="scripts/app/event/playEvent/playEvent.state.js"></script>
+    <script src="scripts/app/event/playEventForAdmin/playEventForAdmin.controller.js"></script>
+    <script src="scripts/app/event/playEventForAdmin/playEventForAdmin.state.js"></script>
+    <script src="scripts/app/home/home.controller.js"></script>
+    <!--login-->
+    <script src="scripts/app/login/login.state.js"></script>
+    <script src="scripts/app/login/login.controller.js"></script>
+
+    <!--services-->
+    <script src="scripts/app/services/teamService.js"></script>
+    <script src="scripts/app/services/loginService.js"></script>
+    <script src="scripts/app/services/eventService.js"></script>
+    <script src="scripts/app/services/questionTypeService.js"></script>
+    <script src="scripts/app/services/questionService.js"></script>
+    <script src="scripts/app/services/userService.js"></script>
+
+</body>
+</html>
