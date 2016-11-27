@@ -7,7 +7,7 @@ CreateEventStateProvider.$inject = ['$stateProvider'];
 function CreateEventStateProvider($stateProvider) {
     $stateProvider
     .state('createEvent', {
-        url: '/create-event',
+        url: '/{userId}/create-event',
         templateUrl: '/./../../scripts/app/event/createEvent/createEvent.template.html',
         controller: 'createEventController',
         controllerAs: 'vm'

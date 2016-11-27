@@ -9,7 +9,6 @@ using System.Collections.Generic;
 
 namespace QuizApp.Controllers.Requests
 {
-    [Authorize]
     [Route("api/userAnswers")]
     public class UserAnswerController : Controller
     {

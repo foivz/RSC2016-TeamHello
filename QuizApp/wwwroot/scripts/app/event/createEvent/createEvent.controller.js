@@ -2,16 +2,17 @@
 
 angular.module('app').controller('createEventController', CreateEventController);
 
-CreateEventController.$inject = ['$state', 'eventService', 'loginService', 'questionService'];
+CreateEventController.$inject = ['$state', 'eventService', 'loginService', 'questionService', '$stateParams'];
 
-function CreateEventController($state, eventService, loginService, questionService) {
+function CreateEventController($state, eventService, loginService, questionService, $stateParams) {
     var vm = this;
 
     vm.event = {};
     vm.questions = [];
 
     vm.createEvent = function () {
-        event.ModeratorID = loginService.getCurrentUser();
+        vm.event.ModeratorID = $stateParams.userId;
+        console.log(event);
 
         vm.questions.forEach(question => {
             if (question.Type == 2 || question.Type == 3) {

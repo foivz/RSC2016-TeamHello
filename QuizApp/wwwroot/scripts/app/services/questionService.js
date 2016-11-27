@@ -2,12 +2,9 @@
 
 angular.module('app').factory('questionService', QuestionService);
 
-QuestionService.$inject = ['$http', 'loginService'];
+QuestionService.$inject = ['$http'];
 
-function QuestionService($http, loginService) {
-
-    $http.defaults.headers.common['Authorization'] = loginService.getCurrentToken();
-
+function QuestionService($http) {
     function createQuestionsWithAnswers(questions) {
         return $http.post('/api/questions/create', questions);
     };

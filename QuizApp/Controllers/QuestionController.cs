@@ -8,7 +8,6 @@ using System.Collections.Generic;
 
 namespace QuizApp.Controllers.Requests
 {
-    [Authorize]
     [Route("api/questions")]
     public class QuestionController : Controller
     {

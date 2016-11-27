@@ -7,6 +7,7 @@ EventService.$inject = ['$http', 'loginService'];
 function EventService($http, loginService) {
 
     function createEvent(event) {
+        console.log(event);
         return $http.post('/api/events/create', event);
     };
 
