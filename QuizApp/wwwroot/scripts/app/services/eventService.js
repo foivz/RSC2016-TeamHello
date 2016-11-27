@@ -40,7 +40,7 @@ function EventService($http, loginService) {
     };
 
     function getFutureEventsByUser(id) {
-        return $http.get('api/events/getFutureByUser/' + id);
+        return $http.get('api/events/getAllFuture/' + id);
     };
 
     function getFutureEvents() {
@@ -71,6 +71,7 @@ function EventService($http, loginService) {
         getEventsByMod: getEventsByMod,
         getPastEventsByMod: getPastEventsByMod,
         getFutureEventsByMod: getFutureEventsByMod,
+        getFutureEventsByUser: getFutureEventsByUser,
         activateEvent: activateEvent,
         deactivateEvent: deactivateEvent,
         searchEventsByName: searchEventsByName

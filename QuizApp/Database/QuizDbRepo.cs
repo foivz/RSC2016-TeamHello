@@ -93,7 +93,16 @@ namespace QuizApp.Database
 
         internal ICollection<Event> GetAllUserEvents(int userID)
         {
-            return GetAllEvents().Where(x => x.TeamEvent.Any(y => y.Team.TeamMembers.Any(z => z.ID == userID))).ToList();
+            var User = _context.Users.Include(x => x.Teams)
+                .ThenInclude(x => x.Team)
+                    .ThenInclude(x => x.Events)
+                        .ThenInclude(x => x.Event)
+                .ToList();
+
+            return User.SelectMany(x => x.Teams)
+                        .SelectMany(x => x.Team.Events)
+                        .Select(x => x.Event)
+                        .ToList();
         }
 
         internal ICollection<Event> GetAllModeratedEvents(int userid)
