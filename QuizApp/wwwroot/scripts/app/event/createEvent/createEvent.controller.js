@@ -16,13 +16,6 @@ function CreateEventController($state, eventService, loginService, questionServi
         vm.event.ModeratorID = $stateParams.userId;
         console.log(event);
 
-        vm.questions.forEach(question => {
-            if (question.Type == 2 || question.Type == 3) {
-                question.Answers.forEach(answer => answer.IsCorrect = true)
-            }
-            question.EventId = vm.event.ID;
-        });
-
         questionService.createQuestionsWithAnswers(vm.questions);
 
         eventService.createEvent(vm.event)
@@ -35,6 +28,7 @@ function CreateEventController($state, eventService, loginService, questionServi
 
     vm.addQuestionField = function () {
         vm.questions.push({});
+        vm.questions[vm.questions.length - 1].EventId = vm.event.ID;
         vm.questions[vm.questions.length - 1].Answers = [];
     }
 

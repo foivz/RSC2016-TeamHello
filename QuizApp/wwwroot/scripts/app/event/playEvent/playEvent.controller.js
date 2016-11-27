@@ -7,7 +7,9 @@ PlayEventController.$inject = ['eventService', '$stateParams'];
 function PlayEventController(eventService, $stateParams) {
     var vm = this;
 
-    eventService.getEvent($stateParams.id)
+    var userID = userService.getUserId();
+
+    eventService.getEvent($stateParams.token)
     .then(function (result) {
         vm.event = result.data;
         console.log(vm.event);
@@ -27,4 +29,14 @@ function PlayEventController(eventService, $stateParams) {
             }
         }, 1000);
     });
+
+    vm.answer = function(question, answer){
+        if (answer.isCorrect) {
+            var userAnswer = {
+                IsCorrect: true,
+                QuestionId: question.id,
+                UserId: userID
+            }
+        }
+    };
 };

@@ -16,6 +16,7 @@ function EventService($http, loginService) {
     };
 
     function getEvent(id) {
+        console.log(id);
         return $http.get('api/events/' + id);
     };
 
