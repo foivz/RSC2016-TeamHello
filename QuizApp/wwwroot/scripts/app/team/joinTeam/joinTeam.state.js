@@ -7,7 +7,7 @@ JoinTeamStateProvider.$inject = ['$stateProvider'];
 function JoinTeamStateProvider($stateProvider) {
     $stateProvider
     .state('joinTeam', {
-        url: '/join/{token}',
+        url: '/join/{token}/{userid}',
         templateUrl: '/./../../scripts/app/team/joinTeam/joinTeam.template.html',
         controller: 'joinTeamController',
         controllerAs: 'vm'

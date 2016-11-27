@@ -7,13 +7,13 @@ JoinTeamController.$inject = ['$state','teamService', 'loginService','$statePara
 function JoinTeamController($state, teamService, loginService, $stateParams) {
     var vm = this;
 
-    vm.user = loginService.getCurrentUser();
+    //vm.user = loginService.getCurrentUser();
 
     if(vm.user)
     {
-        teamService.joinTeam({id: vm.user.ID,token: $stateParams.token})
+        teamService.joinTeam({ id: $stateParams.userid, token: $stateParams.token })
         .then(function (result) {
-        $state.go("home");
+            $state.go("getTeam", {id:$state.token});
         });
     }
     else

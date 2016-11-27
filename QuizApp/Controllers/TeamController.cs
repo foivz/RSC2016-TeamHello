@@ -5,8 +5,7 @@ using QuizApp.Database.Repositories;
 
 namespace QuizApp.Controllers
 {
-    [Authorize]
-    [Route("api/team")]
+    [Route("api/teams")]
     public class TeamController : Controller
     {
         private TeamRepository _repo;
@@ -17,7 +16,7 @@ namespace QuizApp.Controllers
             _repo = repo;
         }
 
-        [HttpGet("all")]
+        [HttpGet("getAll")]
         public JsonResult GetAll()
         {
             return new JsonResult(_repo.GetAll());

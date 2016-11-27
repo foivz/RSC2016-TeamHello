@@ -7,7 +7,7 @@ TeamService.$inject = ['$http'];
 function TeamService($http) {
 
     function createTeam(team) {
-        return $http.post('api/teams/crate', team);
+        return $http.post('api/teams/create', team);
     }
 
     function getTeam(id) {

@@ -35,7 +35,7 @@ namespace QuizApp.Database
 
         internal User GetUserById(int id)
         {
-            return _context.Users.Single(x => x.ID == id);
+            return _context.Users.SingleOrDefault(x => x.ID == id);
         }
 
         internal int CreateEvent(Event _event)

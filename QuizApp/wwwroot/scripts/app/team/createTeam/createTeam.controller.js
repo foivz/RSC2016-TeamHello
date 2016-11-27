@@ -4,7 +4,7 @@ angular.module('app').controller('createTeamController', CreateTeamController);
 
 CreateTeamController.$inject = ['$state','teamService'];
 
-function CreateTeamController($state,teamServcie) {
+function CreateTeamController($state,teamService) {
     var vm = this;
 
     vm.createTeam = function () {
