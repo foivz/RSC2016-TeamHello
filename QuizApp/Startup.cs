@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using Evidencija.Auth;
 using Evidencija.Encription;
 using QuizApp.Database.Repositories;
+using Newtonsoft.Json;
 
 namespace QuizApp
 {
@@ -59,7 +60,9 @@ namespace QuizApp
             services.AddScoped<QuestionRepository>();
             services.AddScoped<AnswerRepository>();
             services.AddScoped<TeamRepository>();
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options => {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

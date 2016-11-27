@@ -10,10 +10,15 @@ namespace QuizApp.Controllers
     {
         private TeamRepository _repo;
 
-
         public TeamController(TeamRepository repo)
         {
             _repo = repo;
+        }
+
+        [HttpGet("get/{id}")]
+        public JsonResult GetAll(int id)
+        {
+            return new JsonResult(_repo.GetById(id));
         }
 
         [HttpGet("getAll")]

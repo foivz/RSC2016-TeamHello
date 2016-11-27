@@ -25,6 +25,11 @@ namespace QuizApp.Database.Repositories
                  .ToList();
         }
 
+        internal Team GetById(int id)
+        {
+            return _context.Teams.SingleOrDefault(x => x.ID == id);
+        }
+
         internal Team CreateTeam(Team team)
         {
             _context.Teams.Add(team);

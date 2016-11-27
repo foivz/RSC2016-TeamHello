@@ -2,16 +2,16 @@
 
 angular.module('app').controller('joinTeamController', JoinTeamController);
 
-JoinTeamController.$inject = ['$state','teamService', 'loginService','$stateParams'];
+JoinTeamController.$inject = ['$state','teamService', 'loginService','$stateParams','userService'];
 
-function JoinTeamController($state, teamService, loginService, $stateParams) {
+function JoinTeamController($state, teamService, loginService, $stateParams, userService) {
     var vm = this;
 
     //vm.user = loginService.getCurrentUser();
 
     if(vm.user)
     {
-        teamService.joinTeam({ id: $stateParams.userid, token: $stateParams.token })
+        teamService.joinTeam({ id: userService.getUserId(), token: $stateParams.token })
         .then(function (result) {
             $state.go("getTeam", {id:$state.token});
         });

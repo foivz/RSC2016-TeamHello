@@ -61,7 +61,9 @@ namespace QuizApp.Database
 
         internal ICollection<Event> GetAllUserUpcommingEvents(int userid)
         {
-            return GetAllUserEvents(userid).Where(x => x.Date > DateTime.Now).ToList();
+            var AllEvents = GetAllUserEvents(userid);
+            var Ret = AllEvents.Where(x => x.Date > DateTime.Now).ToList();
+            return Ret;
         }
 
         internal ICollection<Event> GetAllUserCompletedEvents(int userid)
