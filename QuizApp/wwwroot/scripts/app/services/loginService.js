@@ -6,10 +6,8 @@ LoginService.$inject = ['$q', '$rootScope', '$http'];
 
 function LoginService($q, $rootScope, $http) {
     var user;
-    var token;
 
     $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
-        console.log(userDetails);
         user = userDetails;
 
         loginUser(userDetails);
@@ -19,17 +17,10 @@ function LoginService($q, $rootScope, $http) {
         console.log("log out");
 
         user = null;
-        token = null;
     })
 
     function loginUser(user) {
-        $http.post('/api/auth/login', user)
-        .then(function (result) {
-            console.log(result);
-            token = result.data;
-
-            return token;
-        });
+        return $http.post('/api/auth/login', user);
     };
 
     function logoutUser(user) {

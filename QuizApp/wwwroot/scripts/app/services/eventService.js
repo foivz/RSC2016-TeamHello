@@ -7,7 +7,6 @@ EventService.$inject = ['$http', 'loginService'];
 function EventService($http, loginService) {
 
     function createEvent(event) {
-        $http.defaults.headers.common['Authorization'] = loginService.getCurrentToken();
         return $http.post('/api/events/create', event);
     };
 
@@ -27,20 +26,20 @@ function EventService($http, loginService) {
         return $http.get('api/events/getActive');
     };
 
-    function getEventsByMod() {
-        return $http.get('api/events/getByMod');
+    function getEventsByMod(id) {
+        return $http.get('api/events/getByMod/' + id);
     };
 
-    function getPastEventsByMod() {
-        return $http.get('api/events/getPastByMod');
+    function getPastEventsByMod(id) {
+        return $http.get('api/events/getPastByMod/' + id);
     };
 
-    function getFutureEventsByMod() {
-        return $http.get('api/events/getFutureByMod');
+    function getFutureEventsByMod(id) {
+        return $http.get('api/events/getFutureByMod/' + id);
     };
 
-    function getFutureEventsByUser() {
-        return $http.get('api/events/getFutureByUser');
+    function getFutureEventsByUser(id) {
+        return $http.get('api/events/getFutureByUser/' + id);
     };
 
     function getFutureEvents() {

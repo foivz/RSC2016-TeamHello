@@ -14,12 +14,10 @@ namespace QuizApp.Controllers.Requests
     {
         QuestionRepository _repo;
         AnswerRepository _answerRepo;
-        private int _userid;
         public QuestionController([FromBody]QuestionRepository repo, AnswerRepository answerRepo)
         {
             _repo = repo;
             _answerRepo = answerRepo;
-            _userid = Convert.ToInt32(User.Claims.Where(x => x.Type == "UserID").SingleOrDefault().Value);
         }
 
         [HttpPost("create")]

@@ -14,11 +14,9 @@ namespace QuizApp.Controllers.Requests
     public class AnswerController : Controller
     {
         AnswerRepository _repo;
-        private int _userid;
         public AnswerController(AnswerRepository repo)
         {
             _repo = repo;
-            _userid = Convert.ToInt32(User.Claims.Where(x => x.Type == "UserID").SingleOrDefault().Value);
         }
 
         [HttpPost("create")]
