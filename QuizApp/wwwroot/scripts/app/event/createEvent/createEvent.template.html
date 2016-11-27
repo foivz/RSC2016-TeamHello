@@ -31,7 +31,7 @@
             <textarea ng-model="vm.event.Rules" rows="3" class="form-control"></textarea>
         </div>
 
-        <button ng-click="vm.addQuestionField()">Add question</button>
+        <button type="button" ng-click="vm.addQuestionField()">Add question</button>
         <div ng-repeat="question in vm.questions">
             <div class="form-group">
                 <label>Question</label>
@@ -42,7 +42,7 @@
                 <select ng-model="question.Type" ng-options="questionType.id as questionType.label for questionType in vm.questionTypes.asList"></select>
             </div>
             <div ng-show="question.Type == 0">
-                <button ng-click="vm.addAnswerField(question)">Add answer</button>
+                <button type="button" ng-click="vm.addAnswerField(question)">Add answer</button>
                 <div ng-repeat="answer in question.Answers">
                     <div class="form-group">
                         <label>Answer</label>
