@@ -5,33 +5,22 @@
     <div class="col-xs-8 col-xs-offset-2 top-buffer" id="question-container">
         <div>
             <div class="row">
-                pitanje
+                {{vm.event.questions[vm.questionNumber-1].text}}
             </div>
             <div class="row top-buffer" id="question-subtext">
                 <div class="col-xs-6">
                     <div>Number of question:</div>
-                    1/10
+                    {{vm.questionNumber}}/{{vm.event.questions.Count()}}
                 </div>
-                <div class="col-xs-5 col-xs-offset-1">
+                <div class="col-xs-3 col-xs-offset-1">
                     <div>Time left:</div>
-                    00:09s
+                    00:{{vm.secondsLeft}}s
                 </div>
             </div>
-            <div class="row top-buffer text-center">
-                <div class="col-xs-5 answer">
-                    Odgovor1
-                </div>
-                <div class="col-xs-5 col-xs-offset-1 answer">
-                    Odgovor2
-                </div>
-            </div>
-            <div class="row top-buffer text-center">
-                <div class="col-xs-5 answer">
-                    Odgovor3
-                </div>
-                <div class="col-xs-5 col-xs-offset-1 answer">
-                    Odgovor4
-                </div>
+            <div class="row top-buffer text-center" ng-repeat="answer in vm.event.questions[vm.questionNumber-1].answers">
+                <button ng-click="vm.answer(vm.event.questions[vm.questionNumber-1], answer)" class="col-xs-5 answer">
+                    {{answer.text}}
+                </button>
             </div>
             <div class="row top-buffer text-center" id="next-container">
                 You are next in 3...

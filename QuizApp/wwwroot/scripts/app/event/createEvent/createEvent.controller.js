@@ -2,24 +2,19 @@
 
 angular.module('app').controller('createEventController', CreateEventController);
 
-CreateEventController.$inject = ['$state', 'eventService', 'loginService', 'questionService', '$stateParams'];
+CreateEventController.$inject = ['$state', 'eventService', 'loginService', 'questionService', '$stateParams', 'questionTypeService'];
 
-function CreateEventController($state, eventService, loginService, questionService, $stateParams) {
+function CreateEventController($state, eventService, loginService, questionService, $stateParams, questionTypeService) {
     var vm = this;
 
     vm.event = {};
     vm.questions = [];
 
+    vm.questionTypes = questionTypeService.getQuestionTypes();
+
     vm.createEvent = function () {
         vm.event.ModeratorID = $stateParams.userId;
         console.log(event);
-
-        vm.questions.forEach(question => {
-            if (question.Type == 2 || question.Type == 3) {
-                question.Answers.forEach(answer => answer.IsCorrect = true)
-            }
-            question.EventId = vm.event.ID;
-        });
 
         questionService.createQuestionsWithAnswers(vm.questions);
 
@@ -33,6 +28,7 @@ function CreateEventController($state, eventService, loginService, questionServi
 
     vm.addQuestionField = function () {
         vm.questions.push({});
+        vm.questions[vm.questions.length - 1].EventId = vm.event.ID;
         vm.questions[vm.questions.length - 1].Answers = [];
     }
 

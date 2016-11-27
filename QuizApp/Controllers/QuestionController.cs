@@ -20,7 +20,7 @@ namespace QuizApp.Controllers.Requests
         }
 
         [HttpPost("create")]
-        public void Create(ICollection<Question> Questions)
+        public void Create([FromBody]ICollection<Question> Questions)
         {
             int questionID;
             // _repo.CreateQuestion(Question);
@@ -31,6 +31,11 @@ namespace QuizApp.Controllers.Requests
                 {
                     answer.QuestionId = questionID;
                     _answerRepo.CreateAnswer(answer);
+
+                    if (question.Type == 2 || question.Type == 3)
+                    {
+                        answer.IsCorrect = true;
+                    }
                 }
             }
         }
