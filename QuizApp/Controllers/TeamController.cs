@@ -1,31 +1,33 @@
-﻿//using Microsoft.AspNetCore.Authorization;
-//using Microsoft.AspNetCore.Mvc;
-//using QuizApp.Database.Repositories;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using QuizApp.Database.Model;
+using QuizApp.Database.Repositories;
 
-//namespace QuizApp.Controllers
-//{
-//    [Authorize]
-//    [Route("api/team")]
-//    public class TeamController : Controller
-//    {
-//        private TeamRepository _repo;
+namespace QuizApp.Controllers
+{
+    [Authorize]
+    [Route("api/team")]
+    public class TeamController : Controller
+    {
+        private TeamRepository _repo;
 
 
-//        public TeamController(TeamRepository repo)
-//        {
-//            _repo = repo;
-//        }
+        public TeamController(TeamRepository repo)
+        {
+            _repo = repo;
+        }
 
-//        [HttpGet("all")]
-//        public JsonResult GetAll()
-//        {
-//            return new JsonResult(_repo.GetAll());
-//        }
+        [HttpGet("all")]
+        public JsonResult GetAll()
+        {
+            return new JsonResult(_repo.GetAll());
+        }
 
-//        [HttpPost("create")]
-//        public string CreateTeam()
-//        {
-
-//        }
-//    }
-//}
+        [HttpPost("create")]
+        public string CreateTeam([FromBody]Team team)
+        {
+            _repo.CreateTeam(team);
+            return "";
+        }
+    }
+}
