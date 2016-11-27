@@ -8,6 +8,8 @@ function loginStateProvider($stateProvider) {
     $stateProvider
     .state('login', {
         url: '/login',
-        templateUrl: '/./../../scripts/app/login/login.template.html'
+        templateUrl: '/./../../scripts/app/login/login.template.html',
+        controller: 'loginController',
+        controllerAs: 'vm'
     });
 };
