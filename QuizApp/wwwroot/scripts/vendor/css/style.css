@@ -99,10 +99,11 @@ body {
 #menu-title {
     text-align: center;
     padding-top: 10%;
-    font-size: 20px;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 40px;
+    width: 100%;
+    margin: 0;
+    font-family: panton-blackitaliccaps;
+    color:#0D9CDE;
 }
 
 .menu-content {
@@ -113,6 +114,11 @@ body {
     background-color:white;
     height: 7%;
     box-shadow: inset 10px 0 7px -7px gray;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 3%;
+    padding-right: 3%;
+    overflow: auto
 }
 
 .public-body {
@@ -129,17 +135,92 @@ body {
 
 .menu-button {
    display:flex;
-   padding-bottom: 10%;
-   padding-left:10%
+   margin-bottom: 10%;
+   padding-left:10%;
+   padding-top:5%;
 }
 
 .menu-text {
     margin: 0;
     padding-left: 5%;
     width: 90%;
-    font-size: 20px
+    font-size: 20px;
+    color: gray;
+    font-family: opensans-semibold;
+    padding-top: 5%;
 }
 
+.menu-icon {
+   height: 40px;
+   margin-bottom:10%;
+}
 
+.menu-button:hover{
+    background-color:#0D9CDE;
+    cursor:pointer;
+}
 
+#user-icon {
+    height: 40px;
+    border-radius:50%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#user-icon:hover {
+    cursor:pointer;
+}
+
+#search-bar {
+    height: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#search-icon {
+    height: 70%;
+}
+
+#search-icon:hover {
+    cursor:pointer;
+}
+
+.search-wrap {
+    margin-top: 1%;
+}
+
+.add-buttons {
+    padding-top: 5%;
+}
+
+.add-button {
+    border: none;
+    background-color: #0D9CDE;
+    border-radius: 20px;
+    border-bottom: 3px solid #128DC6;
+}
+
+.closer {
+    margin-left: 3%;
+}
+
+    
+
+.add-btn-text {
+    line-height: 200%;
+    padding-top: 3%;
+    font-size: 15px;
+    color:white;
+    font-family:opensans-semibold;
+}
+
+.news-section {
+    margin-top: 15%;
+    height: 100%;
+    margin-left: 5%
+}
+
+.trophy {
+    height:40%;
+}
 
