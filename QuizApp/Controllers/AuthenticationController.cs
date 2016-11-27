@@ -20,13 +20,11 @@ namespace QuizApp.Controllers
         }
 
         [HttpPost("login")]
-        public string Login([FromBody]LoginRequest req)
+        public JsonResult Login([FromBody]LoginRequest req)
         {
             var user = _repo.GetUser(req);
 
-            var token = _tokenProvider.Create(user, 6000).Token;
-
-            return token;
+            return new JsonResult(user);
         }
     }
 }

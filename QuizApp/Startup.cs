@@ -73,7 +73,7 @@ namespace QuizApp
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseCustomAuthentication();
+            //app.UseCustomAuthentication();
             app.UseMvc();
         }
     }

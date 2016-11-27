@@ -13,11 +13,9 @@ namespace QuizApp.Controllers.Requests
     public class EventController : Controller
     {
         QuizDbRepo _repo;
-        private int _userid;
         public EventController(QuizDbRepo repo)
         {
             _repo = repo;
-            _userid = Convert.ToInt32(User.Claims.Where(x => x.Type == "UserID").SingleOrDefault().Value);
         }
 
         [HttpPost("create")]
@@ -45,24 +43,24 @@ namespace QuizApp.Controllers.Requests
             return new JsonResult(events);
         }
 
-        [HttpGet("getByMod")]
-        public JsonResult GetByModerator()
+        [HttpGet("getByMod/{id}")]
+        public JsonResult GetByModerator(int id)
         {
-            ICollection<Event> events = _repo.GetEventsByModerator(_userid);
+            ICollection<Event> events = _repo.GetEventsByModerator(id);
             return new JsonResult(events);
         }
 
-        [HttpGet("getFutureByMod")]
-        public JsonResult GetByModeratorUpcomming()
+        [HttpGet("getFutureByMod/{id}")]
+        public JsonResult GetByModeratorUpcomming(int id)
         {
-            ICollection<Event> events = _repo.GetAllUpcommingModeratedEvents(_userid);
+            ICollection<Event> events = _repo.GetAllUpcommingModeratedEvents(id);
             return new JsonResult(events);
         }
 
-        [HttpGet("getPastByMod")]
-        public JsonResult GetByModeratorComplete()
+        [HttpGet("getPastByMod/{id}")]
+        public JsonResult GetByModeratorComplete(int id)
         {
-            ICollection<Event> events = _repo.GetAllCompletedEventsByMod(_userid);
+            ICollection<Event> events = _repo.GetAllCompletedEventsByMod(id);
             return new JsonResult(events);
         }
 
@@ -80,32 +78,32 @@ namespace QuizApp.Controllers.Requests
             return new JsonResult(events);
         }
 
-        [HttpGet("getAllByParticipant")]
-        public JsonResult GetAllByParticipant()
+        [HttpGet("getAllByParticipant/{id}")]
+        public JsonResult GetAllByParticipant(int id)
         {
-            ICollection<Event> events = _repo.GetAllUserEvents(_userid);
+            ICollection<Event> events = _repo.GetAllUserEvents(id);
             return new JsonResult(events);
         }
 
-        [HttpGet("getAllByUser")]
-        public JsonResult GetAllByUser()
+        [HttpGet("getAllByUser/{id}")]
+        public JsonResult GetAllByUser(int id)
         {
-            List<Event> events = _repo.GetAllUserEvents(_userid).ToList();
-            events.AddRange(_repo.GetAllModeratedEvents(_userid));
+            List<Event> events = _repo.GetAllUserEvents(id).ToList();
+            events.AddRange(_repo.GetAllModeratedEvents(id));
             return new JsonResult(events);
         }
 
-        [HttpGet("getallusercompleted")]
-        public JsonResult GetAllUserCompleted()
+        [HttpGet("getallusercompleted/{id}")]
+        public JsonResult GetAllUserCompleted(int id)
         {
-            ICollection<Event> events = _repo.GetAllUserCompletedEvents(_userid);
+            ICollection<Event> events = _repo.GetAllUserCompletedEvents(id);
             return new JsonResult(events);
         }
 
-        [HttpGet("getAllFuture")]
-        public JsonResult GetAllUserUpcomming()
+        [HttpGet("getAllFuture/{id}")]
+        public JsonResult GetAllUserUpcomming(int id)
         {
-            ICollection<Event> events = _repo.GetAllUserUpcommingEvents(_userid);
+            ICollection<Event> events = _repo.GetAllUserUpcommingEvents(id);
             return new JsonResult(events);
         }
 

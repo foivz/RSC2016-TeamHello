@@ -2,6 +2,7 @@
 using QuizApp.Database.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace QuizApp.Database.Repositories
 {
@@ -25,5 +26,9 @@ namespace QuizApp.Database.Repositories
                  .ToList();
         }
 
+        internal void CreateTeam(Team team)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
