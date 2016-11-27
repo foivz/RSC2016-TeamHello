@@ -8,7 +8,7 @@ namespace QuizApp.Database.Model
     public class Question : ModelBase
     {
         public string Text { get; set; }
-        public string Type { get; set; }
+        public int Type { get; set; }
         public DateTime Time { get; set; }
         public int EventId { get; set; }
 

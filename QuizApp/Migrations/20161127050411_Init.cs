@@ -100,7 +100,7 @@ namespace QuizApp.Migrations
                     EventId = table.Column<int>(nullable: false),
                     Text = table.Column<string>(nullable: true),
                     Time = table.Column<DateTime>(nullable: false),
-                    Type = table.Column<string>(nullable: true)
+                    Type = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

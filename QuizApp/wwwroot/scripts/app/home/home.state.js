@@ -9,6 +9,7 @@ function homeStateProvider($stateProvider) {
     .state('home', {
         url: '/home',
         controller: '/./../../scripts/app/home/home.controller.js',
-        templateUrl: '/./../../scripts/app/home/home.template.html'
+        templateUrl: '/./../../scripts/app/home/home.template.html',
+        controllerAs : 'vm'
     });
 };

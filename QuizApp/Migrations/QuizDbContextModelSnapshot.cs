@@ -73,7 +73,7 @@ namespace QuizApp.Migrations
 
                     b.Property<DateTime>("Time");
 
-                    b.Property<string>("Type");
+                    b.Property<int>("Type");
 
                     b.HasKey("ID");
 
