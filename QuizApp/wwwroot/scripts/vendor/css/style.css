@@ -276,3 +276,7 @@ body {
     margin-top: auto;
     margin-bottom: auto;
 }
+
+.quiz-name {
+    font-family:panton-blackitaliccaps;
+}
